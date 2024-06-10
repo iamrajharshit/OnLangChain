@@ -6,7 +6,7 @@ LangChain Expression Language (LCEL) is a framework within LangChain designed to
 
 ## Components of LCEL
 
-<img src="02_LCEL\img\01_LCEL.png">
+<img src="https://github.com/iamrajharshit/OnLangChain/blob/main/02_LCEL/img/01_LCEL_a.png">
 <br>
 
 - **Prompt**: This component takes an initial input and structures it into a form that can be processed by the language model (LLM). It serves as the starting point of the chain.
@@ -28,6 +28,8 @@ LangChain Expression Language (LCEL) is a framework within LangChain designed to
 
 ## Composition Syntax
 LCEL allows the composition of these components using a syntax similar to the Linux pipe (`|`) operator, making it intuitive to chain multiple components together.
+
+<img src ="https://github.com/iamrajharshit/OnLangChain/blob/main/02_LCEL/img/01_LCEL_b.png"><br>
 
 ```
 Chain = prompt | llm | OutputParser
