@@ -44,3 +44,52 @@ This syntax indicates that the input will flow through the prompt, then be proce
 
 - Defines the type of output each component produces, ensuring compatibility and correct dat flow through the chain.
 
+## Interface 
+The interface components in LangChain that implement the "Runnable" protocol are designed to standardize how different parts of a language processing chain interact with each other. 
+
+### Runnable Protocol
+
+Common Methods:
+
+- `invoke`: This method executes the primary function of the component, such as processing input data to generate output.
+
+- `stream`: This method supports streaming output, which is useful for handling large outputs or real-time data processing.
+
+- `abatch`: This method supports streaming output, which is useful for handling large outputs or real-time data processing.
+
+Common Properties:
+- input_schema: Defines the structure and type of input data that the component expects.
+
+- output_schema: Specifies the structure and type of output data that the component produces.
+
+### Common I/O
+|Component|Input Type|Output Type|
+|--|--|--|
+|Prompt|Dictionary|Prompt Value|
+|Retriever|Single String|List of Documents|
+|LLM|String,list of messages or Prompt Value|String|
+|ChatModel|String, list of messages or Prompt Value|ChatMessage|
+|Tool|String/Dictionary|Tool dependent|
+|Output Parser|Output of LLm or ChatModel|Parser dependent|
+
+
+## Why use LCEL?
+LangChain Expression Language (LCEL) provides a powerful framework for building and managing complex language processing workflows. Its key features and capabilities make it an attractive choice for developers working with language models and related components.
+
+**Key Features and Benefits of LCEL:**
+
+- Async, Batch and Streaming Support
+    - Asynchronous Support: LCEL allows components to run asynchronously, enabling tasks to execute concurrently without blocking each other. This is particularly useful for I/O-bound operations, as it improves efficiency and responsiveness.
+
+    - Batch support: LCEL supports batch processing, which allows multiple inputs to be processed simultaneously. This can significantly reduce processing time and improve throughput.
+
+    - Streaming support: Streaming capabilities enable the handling of large outputs or real-time data processing, which is crucial for applications that require continuous data flow and immediate processing.
+
+- Fallbacks: LCEL supports fallback mechanisms, which means that if a component fails or produces an error, an alternative component or method can be used. This enhances the robustness and reliability of the system by ensuring that it can continue functioning even in the presence of errors.
+
+- Parallelism
+    - Time-Consuming LLM Calls: Language model (LLM) calls can be computationally intensive and time-consuming. LCEL's parallelism capabilities allow these calls to be distributed across multiple processors or threads, reducing the overall processing time.
+
+    - Parallel Execution of Components: Any components that can be run in parallel are executed simultaneously. This parallelism maximizes resource utilization and improves the performance of the entire workflow.
+
+- Built-in Logging: LCEL includes built-in logging features that provide detailed insights into the execution of components. This logging helps in monitoring the workflow, debugging issues, and optimization.
